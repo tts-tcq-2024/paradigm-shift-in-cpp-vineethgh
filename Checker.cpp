@@ -24,7 +24,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
     cout << "Temperature out of range!\n";
     return false;
   }
-  return (socIsNotInRange(soc,float chargeRate);
+  return (socIsNotInRange(soc,chargeRate);
 }
  
 int main() {

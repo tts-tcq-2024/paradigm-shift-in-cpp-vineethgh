@@ -10,7 +10,7 @@ bool chargeRateIsNotInRange(float chargeRate)
   }
   return true;
 }
-bool socIsNotInRange(float soc)
+bool socIsNotInRange(float soc,float chargeRate)
 {
   if(soc < 20 || soc > 80) {
     cout << "State of Charge out of range!\n";
@@ -24,7 +24,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
     cout << "Temperature out of range!\n";
     return false;
   }
-  return (socIsNotInRange(soc,chargeRate);
+  return (socIsNotInRange(soc,chargeRate));
 }
  
 int main() {

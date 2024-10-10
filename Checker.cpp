@@ -7,7 +7,7 @@ bool checkTemperature(float temperature, std::string &messageTemp) {
         messageTemp = "Temperature too low! ";
         return false;
     } else if (temperature > 45) {
-        messageTemp = " Temperature too high! ";
+        messageTemp = "Temperature too high! ";
         return false;
     }
     return true;
@@ -54,19 +54,19 @@ void testBatteryIsOk() {
     assert(message == "Battery is OK.");
     // Test case where temperature is too low
     assert(batteryIsOk(-1, 70, 0.7, message) == false);
-    assert(message == "Temperature too low!");
+    assert(message == "Temperature too low! ");
     // Test case where temperature is too high
     assert(batteryIsOk(50, 70, 0.7, message) == false);
-    assert(message == "Temperature too high!");
+    assert(message == "Temperature too high! ");
     // Test case where SOC is too low
     assert(batteryIsOk(25, 10, 0.7, message) == false);
-    assert(message == "State of Charge too low!");
+    assert(message == " State of Charge too low! ");
     // Test case where SOC is too high
     assert(batteryIsOk(25, 100, 0.7, message) == false);
-    assert(message == "State of Charge too high!");
+    assert(message == " State of Charge too high! ");
     // Test case where charge rate is too high
     assert(batteryIsOk(25, 70, 0.9, message) == false);
-    assert(message == "Charge Rate too high!");
+    assert(message == " Charge Rate too high!");
     assert(batteryIsOk(-1, 19, 0.9, message) == false);
     assert(message == "Temperature too low! and State of Charge too low! and Charge Rate too high! ");
 }

@@ -129,7 +129,7 @@ void testBatteryIsOk() {
     assert(messageWarning == "Warning: Approaching high chargeRate!");
     //Test case for All have warnings
     assert(batteryIsOk(2, 21, 0.79, message, messageWarning) == true);
-    assert(messageWarning == "Warning: Approaching low Temperature!Warning: Approaching discharge!Warning: Approaching high chargeRate");
+    assert(messageWarning == "Warning: Approaching low Temperature!Warning: Approaching discharge!Warning: Approaching high chargeRate!");
 }
 int main() {
     testBatteryIsOk();

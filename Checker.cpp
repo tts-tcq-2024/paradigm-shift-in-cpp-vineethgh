@@ -4,7 +4,7 @@
 using namespace std;
 bool checkForRange(float element , float lowerLimit, float upperLimit)
 {
-    if(element > lowerLimit && element > upperLimit)
+    if(element > lowerLimit && element < upperLimit)
     {
         return true;
     }

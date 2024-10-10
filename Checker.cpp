@@ -2,7 +2,7 @@
 #include <cassert>
 #include <string>
 using namespace std;
-void checkForRange(float element , float lowerLimit, float upperLimit)
+bool checkForRange(float element , float lowerLimit, float upperLimit)
 {
     if(element > lowerLimit && element > upperLimit)
     {
@@ -25,7 +25,7 @@ void checkForSocWarning(float soc, std::string &messageSoc) {
     }
 }
 void checkForChargeRateWarning(float chargeRate, std::string &messageChargeRate) {
-    if (checkForRange(chargeRate,0.76,0.8) {
+    if (checkForRange(chargeRate,0.76,0.8)) {
         messageChargeRate = "Warning: Approaching high chargeRate";
     }
 }

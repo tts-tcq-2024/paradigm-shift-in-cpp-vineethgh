@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 checkForTempWarning(float temperature, std::string &messageTemp) {
-    if (temperature > 0 && temperatue < 2.25) {
+    if (temperature > 0 && temperature < 2.25) {
         messageTemp = "Warning: Approaching low Temperature";
         return false;
-    } else if (temperature > 42.75 && temperatue < 45) {
+    } else if (temperature > 42.75 && temperature < 45) {
         messageTemp = "Warning: Approaching High Temperature";
         return false;
     }
@@ -82,7 +82,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate, std::string &me
     bool allChecksOk = performCheck(temperature, soc, chargeRate, message);
     if (allChecksOk) {
         message = "Battery is OK.";
-        performWarningCheck(float temperature, float soc, float chargeRate, messageWarning)
+        performWarningCheck(temperature, soc, chargeRate, messageWarning)
     }
     return allChecksOk;
 }

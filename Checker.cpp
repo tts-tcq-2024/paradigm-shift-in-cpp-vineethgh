@@ -2,29 +2,29 @@
 #include <cassert>
 #include <string>
 using namespace std;
-bool checkTemperature(float temperature, std::string &message) {
+bool checkTemperature(float temperature, std::string &messageTemp) {
     if (temperature < 0) {
-        message = "Temperature too low!";
+        messageTemp = "Temperature too low!";
         return false;
     } else if (temperature > 45) {
-        message = "Temperature too high!";
+        messageTemp = "Temperature too high!";
         return false;
     }
     return true;
 }
-bool checkSOC(float soc, std::string &message) {
+bool checkSOC(float soc, std::string &messageSoc) {
     if (soc < 20) {
-        message = "State of Charge too low!";
+        messageSoc = "State of Charge too low!";
         return false;
     } else if (soc > 80) {
-        message = "State of Charge too high!";
+        messageSoc = "State of Charge too high!";
         return false;
     }
     return true;
 }
-bool checkChargeRate(float chargeRate, std::string &message) {
+bool checkChargeRate(float chargeRate, std::string &messageChargeRate) {
     if (chargeRate > 0.8) {
-        message = "Charge Rate too high!";
+        messageChargeRate = "Charge Rate too high!";
         return false;
     }
     return true;
@@ -37,6 +37,7 @@ bool performCheck(float temperature, float soc, float chargeRate, std::string &m
     bool socOk = checkSOC(soc, messageSoc);
     bool chargeRateOk = checkChargeRate(chargeRate, messageChargeRate);
     message = messageTemp + " and "+ messageSoc +" and "+ messageChargeRate;
+    cout<<message;
     return temperatureOk && socOk && chargeRateOk;
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate, std::string &message) {

@@ -4,27 +4,27 @@
 using namespace std;
 bool checkTemperature(float temperature, std::string &messageTemp) {
     if (temperature < 0) {
-        *messageTemp = "Temperature too low!";
+        messageTemp = "Temperature too low!";
         return false;
     } else if (temperature > 45) {
-        *messageTemp = "Temperature too high!";
+        messageTemp = "Temperature too high!";
         return false;
     }
     return true;
 }
 bool checkSOC(float soc, std::string &messageSoc) {
     if (soc < 20) {
-        *messageSoc = "State of Charge too low!";
+        messageSoc = "State of Charge too low!";
         return false;
     } else if (soc > 80) {
-        *messageSoc = "State of Charge too high!";
+        messageSoc = "State of Charge too high!";
         return false;
     }
     return true;
 }
 bool checkChargeRate(float chargeRate, std::string &messageChargeRate) {
     if (chargeRate > 0.8) {
-        *messageChargeRate = "Charge Rate too high!";
+        messageChargeRate = "Charge Rate too high!";
         return false;
     }
     return true;

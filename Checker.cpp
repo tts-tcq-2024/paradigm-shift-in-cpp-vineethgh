@@ -60,13 +60,13 @@ void testBatteryIsOk() {
     assert(message == "Temperature too high!");
     // Test case where SOC is too low
     assert(batteryIsOk(25, 10, 0.7, message) == false);
-    assert(message == " State of Charge too low!");
+    assert(message == "State of Charge too low!");
     // Test case where SOC is too high
     assert(batteryIsOk(25, 100, 0.7, message) == false);
-    assert(message == " State of Charge too high!");
+    assert(message == "State of Charge too high!");
     // Test case where charge rate is too high
     assert(batteryIsOk(25, 70, 0.9, message) == false);
-    assert(message == " Charge Rate too high!");
+    assert(message == "Charge Rate too high!");
     assert(batteryIsOk(-1, 19, 0.9, message) == false);
     assert(message == "Temperature too low! State of Charge too low! Charge Rate too high!");
 }

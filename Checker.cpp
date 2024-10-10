@@ -30,9 +30,13 @@ bool checkChargeRate(float chargeRate, std::string &message) {
     return true;
 }
 bool performCheck(float temperature, float soc, float chargeRate, std::string &message) {
-    bool temperatureOk = checkTemperature(temperature, message);
-    bool socOk = checkSOC(soc, message);
-    bool chargeRateOk = checkChargeRate(chargeRate, message);
+    std::string messageTemp;
+    std::string messageSoc;
+    std::string messageChargeRate;
+    bool temperatureOk = checkTemperature(temperature, messageTemp);
+    bool socOk = checkSOC(soc, messageSoc);
+    bool chargeRateOk = checkChargeRate(chargeRate, messageChargeRate);
+    message = messageTemp + messageSoc + messageChargeRate;
     return temperatureOk && socOk && chargeRateOk;
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate, std::string &message) {
@@ -62,6 +66,8 @@ void testBatteryIsOk() {
     // Test case where charge rate is too high
     assert(batteryIsOk(25, 70, 0.9, message) == false);
     assert(message == "Charge Rate too high!");
+    assert(batteryIsOk(-1, 19, 0.9, message) == false);
+    assert(message == "Temperature too low! State of Charge too low! Charge Rate too high! ");
 }
 int main() {
     testBatteryIsOk();

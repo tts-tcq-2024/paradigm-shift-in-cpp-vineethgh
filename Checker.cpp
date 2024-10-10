@@ -20,7 +20,7 @@ void checkForTempWarning(float temperature, std::string &messageTemp) {
 void checkForSocWarning(float soc, std::string &messageSoc) {
     if (checkForRange(soc,20,24)) {
         messageSoc = "Warning: Approaching discharge";
-    } else if (checkForRange(soc,76,80) {
+    } else if (checkForRange(soc,76,80)) {
         messageSoc = "Warning: Approaching charge-peak";
     }
 }

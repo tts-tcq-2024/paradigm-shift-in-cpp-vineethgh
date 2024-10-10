@@ -2,6 +2,16 @@
 #include <cassert>
 #include <string>
 using namespace std;
+checkForTempWarning(float temperature, std::string &messageTemp) {
+    if (temperature > 0 && temperatue < 2.25) {
+        messageTemp = "Warning: Approaching low Temperature";
+        return false;
+    } else if (temperature > 42.75 && temperatue < 45) {
+        messageTemp = "Warning: Approaching High Temperature";
+        return false;
+    }
+    return true;
+}
 bool checkTemperature(float temperature, std::string &messageTemp) {
     if (temperature < 0) {
         messageTemp = "Temperature too low!";
@@ -37,13 +47,25 @@ bool performCheck(float temperature, float soc, float chargeRate, std::string &m
     bool socOk = checkSOC(soc, messageSoc);
     bool chargeRateOk = checkChargeRate(chargeRate, messageChargeRate);
     message = messageTemp + messageSoc + messageChargeRate;
-    cout<<message;
     return temperatureOk && socOk && chargeRateOk;
 }
-bool batteryIsOk(float temperature, float soc, float chargeRate, std::string &message) {
+
+bool performWarningCheck(float temperature, float soc, float chargeRate,std::string &messageWarning) {
+    std::string messageTemp;
+    std::string messageSoc;
+    std::string messageChargeRate;
+    bool temperatureOk = checkTemperature(temperature, messageTemp);
+    bool socOk = checkSOC(soc, messageSoc);
+    bool chargeRateOk = checkChargeRate(chargeRate, messageChargeRate);
+    messageWarning = messageTemp + messageSoc + messageChargeRate;
+    return temperatureOk && socOk && chargeRateOk;
+}
+
+bool batteryIsOk(float temperature, float soc, float chargeRate, std::string &message,std::string &messageWarning) {
     bool allChecksOk = performCheck(temperature, soc, chargeRate, message);
     if (allChecksOk) {
         message = "Battery is OK.";
+        performWarningCheck(float temperature, float soc, float chargeRate, messageWarning)
     }
     return allChecksOk;
 }

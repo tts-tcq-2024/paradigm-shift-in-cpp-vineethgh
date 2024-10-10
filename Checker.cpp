@@ -68,7 +68,7 @@ void testBatteryIsOk() {
     assert(batteryIsOk(25, 70, 0.9, message) == false);
     assert(message == " Charge Rate too high!");
     assert(batteryIsOk(-1, 19, 0.9, message) == false);
-    assert(message == "Temperature too low! and State of Charge too low! and Charge Rate too high! ");
+    assert(message == "Temperature too low! State of Charge too low! Charge Rate too high!");
 }
 int main() {
     testBatteryIsOk();

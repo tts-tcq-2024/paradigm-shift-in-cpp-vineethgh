@@ -98,13 +98,30 @@ void testBatteryIsOk() {
     // Test case where charge rate is too high
     assert(batteryIsOk(25, 70, 0.9, message, messageWarning) == false);
     assert(message == "Charge Rate too high!");
+    //Test case where temperature is too low, SOC is too low, charge rate is too high
     assert(batteryIsOk(-1, 19, 0.9, message, messageWarning) == false);
     assert(message == "Temperature too low!State of Charge too low!Charge Rate too high!");
 
     //Test case where warning messages are present
-    assert(batteryIsOk(23, 70, 0.7, message, messageWarning) == true);
+    //Test case for low temperature warning
+    assert(batteryIsOk(2, 70, 0.7, message, messageWarning) == true);
     assert(message == "Battery is OK.");
     assert(messageWarning == "Warning: Approaching low Temperature");
+    //Test case for high temperature warning
+    assert(batteryIsOk(44, 70, 0.7, message, messageWarning) == true);
+    assert(messageWarning == "Warning: Approaching High Temperature");
+    //Test case for discharge warning
+    assert(batteryIsOk(30, 21, 0.7, message, messageWarning) == true);
+    assert(messageWarning == "Warning: Approaching discharge");
+    //Test case for charge-peak warning
+    assert(batteryIsOk(30, 79, 0.7, message, messageWarning) == true);
+    assert(messageWarning == "Warning: Approaching charge-peak");
+    //Test case for high chargeRate warning
+    assert(batteryIsOk(30, 70, 0.79, message, messageWarning) == true);
+    assert(messageWarning == "Warning: Approaching high chargeRate");
+    //Test case for All have warnings
+    assert(batteryIsOk(2, 21, 0.79, message, messageWarning) == true);
+    assert(messageWarning == "Warning: Approaching low TemperatureWarning: Approaching dischargeWarning: Approaching high chargeRate");
 }
 int main() {
     testBatteryIsOk();

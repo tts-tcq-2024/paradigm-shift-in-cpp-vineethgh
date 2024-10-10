@@ -2,22 +2,30 @@
 #include <cassert>
 #include <string>
 using namespace std;
+void checkForRange(float element , float lowerLimit, float upperLimit)
+{
+    if(element > lowerLimit && element > upperLimit)
+    {
+        return true;
+    }
+    return false;
+}
 void checkForTempWarning(float temperature, std::string &messageTemp) {
-    if (temperature > 0 && temperature < 2.25) {
+    if ( checkForRange(temperature,0,2.25)) {
         messageTemp = "Warning: Approaching low Temperature";
-    } else if (temperature > 42.75 && temperature < 45) {
+    } else if (checkForRange(temperature,42.75,45)) {
         messageTemp = "Warning: Approaching High Temperature";
     }
 }
 void checkForSocWarning(float soc, std::string &messageSoc) {
-    if (soc > 20 && soc < 24) {
+    if (checkForRange(soc,20,24)) {
         messageSoc = "Warning: Approaching discharge";
-    } else if (soc > 76 && soc < 80) {
+    } else if (checkForRange(soc,76,80) {
         messageSoc = "Warning: Approaching charge-peak";
     }
 }
 void checkForChargeRateWarning(float chargeRate, std::string &messageChargeRate) {
-    if (chargeRate > 0.76 && chargeRate < 0.8) {
+    if (checkForRange(chargeRate,0.76,0.8) {
         messageChargeRate = "Warning: Approaching high chargeRate";
     }
 }
